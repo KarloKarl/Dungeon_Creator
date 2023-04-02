@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class player_controls : MonoBehaviour
 {
-    public Vector2 speed = new Vector2(50,50);
+    public Vector2 speed = new Vector2(5,5);
     // Start is called before the first frame update
     void Start()
     {

@@ -8,22 +8,22 @@ public class camera_movement : MonoBehaviour
     public enum directions{
         Top,Left,Right,Down
     }
-    private  Camera mainCamera;
-    private  GameObject player;
+    public static Camera mainCamera;
+    public GameObject  player;
     public float leftCameraEdgeX ;
     public float bottomCameraEdgeY;
     public float topCameraEdgeY;
     public float rightCameraEdgeX;
 
-    public Vector2 speed=new Vector2(20,20);
+    public Vector2 speed=new Vector2(1,1);
 
     public Vector3 playerPosition;
-     Vector3 cameraPosition;
+    Vector3 cameraPosition;
     // Start is called before the first frame update
-    void Start()
+       void Awake()
     {  
-        player = GameObject.Find("playerMain");
         mainCamera = Camera.main;
+        player = GameObject.Find("playerMain");
         playerPosition = player.transform.position;
         cameraPosition = mainCamera.transform.position;
         float cameraHeight = 2f * mainCamera.orthographicSize;
@@ -38,18 +38,17 @@ public class camera_movement : MonoBehaviour
     void Update()
     {
         playerPosition = player.transform.position;
-        cameraPosition = Camera.main.transform.position;
-        if(playerPosition.x<(leftCameraEdgeX+getPercentWidth(0.2f))){
-            mainCamera.transform.position= new Vector3(cameraPosition.x - speed.x, cameraPosition.y, cameraPosition.z);
+        if(playerPosition.x<(leftCameraEdgeX)){
+            moveCamera(directions.Left,speed);
         }
-        if(playerPosition.x>(rightCameraEdgeX-getPercentWidth(0.2f))){
-            mainCamera.transform.position= new Vector3(cameraPosition.x + speed.x, cameraPosition.y, cameraPosition.z);
+        if(playerPosition.x>(rightCameraEdgeX)){
+            moveCamera(directions.Right,speed);
         }
-         if(playerPosition.y>(topCameraEdgeY-getPercentWidth(0.2f))){
-            mainCamera.transform.position= new Vector3(cameraPosition.x + speed.x, cameraPosition.y, cameraPosition.z);
+         if(playerPosition.y<(topCameraEdgeY)){
+            moveCamera(directions.Top,speed);
         }
-         if(playerPosition.x>(bottomCameraEdgeY-getPercentWidth(0.2f))){
-            mainCamera.transform.position= new Vector3(cameraPosition.x + speed.x, cameraPosition.y, cameraPosition.z);
+         if(playerPosition.y>(bottomCameraEdgeY)){
+            moveCamera(directions.Down,speed);
         }
     }
 
@@ -57,9 +56,18 @@ public class camera_movement : MonoBehaviour
         switch (direction){
             case directions.Left:
                 mainCamera.transform.position= new Vector3(cameraPosition.x - speed.x, cameraPosition.y, cameraPosition.z);
-              
+                break;
+            case directions.Right:
+                mainCamera.transform.position= new Vector3(cameraPosition.x + speed.x, cameraPosition.y, cameraPosition.z);
+                break;
+            case directions.Top:
+                mainCamera.transform.position= new Vector3(cameraPosition.x, cameraPosition.y-speed.y, cameraPosition.z);
+                break;
+            case directions.Down:
+                mainCamera.transform.position= new Vector3(cameraPosition.x, cameraPosition.y+speed.y, cameraPosition.z);
                 break;
         }
+        updateInfo();
         
     }
 
@@ -74,15 +82,21 @@ public class camera_movement : MonoBehaviour
     }
     
     // 0.0<per<=1.0 z.B. 0.3f=30% 
-    float getPercentWidth(float per){
-        float screenWidth = Screen.width;
-        float widthInPixels = per * screenWidth;
-        return widthInPixels;
-    }
+   float GetPercentWidth(float percent)
+{
+    percent /= 100f;
+    float screenWidth = Screen.width;
+    float worldWidth = bottomCameraEdgeY * mainCamera.orthographicSize * 2f * mainCamera.aspect;
+    float widthInGrid = worldWidth * percent / bottomCameraEdgeY;
+    return widthInGrid;
+}
 
-    float getPercentHeight(float per){
+float getPercentHeight(float percent)
+{
+    percent /= 100f;
     float screenHeight = Screen.height;
-    float heightInPixels = per * screenHeight;
-    return heightInPixels;
+    float worldHeight = 2 * rightCameraEdgeX * mainCamera.orthographicSize * 2f;
+    float heightInGrid = 2 *  worldHeight * percent / rightCameraEdgeX;
+    return heightInGrid;
 }
 }

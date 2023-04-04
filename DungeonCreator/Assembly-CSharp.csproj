@@ -47,20 +47,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Scripts\PropVariants\FP_Flower.cs" />
-     <Compile Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Scripts\PropVariants\FP_Cattail.cs" />
-     <Compile Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Scripts\PropVariants\FP_GrassLong.cs" />
-     <Compile Include="Assets\Packages\KrishnaPalacio\MinifantasyCommon\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Scripts\PropVariants\FP_Creeper.cs" />
      <Compile Include="Assets\Player\Scripts\player_controls.cs" />
-     <Compile Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Scripts\PropVariants\FP_Pillar.cs" />
-     <Compile Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Scripts\PropVariants\FP_Tree.cs" />
      <Compile Include="Assets\Camera\Code\Scripts\cameraTopDown.cs" />
-     <None Include="Assets\Packages\Cave Platformer Tileset\readme.txt" />
-     <None Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Sprites\Tileset\River\Waterfall\WaterfalTilesInfo.txt" />
-     <None Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\FP Documentation.txt" />
-     <None Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Sprites\Tileset\River\RiverTilesInfo.txt" />
-     <None Include="Assets\Packages\KrishnaPalacio\MINIFANTASY - Forgotten Plains\Sprites\Tileset\WaterTilesInfo.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

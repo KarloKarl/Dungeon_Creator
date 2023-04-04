@@ -24,4 +24,8 @@ public class player_controls : MonoBehaviour
         transform.Translate(movement);
     }
 
+
+    
+
+
 }

@@ -47,6 +47,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Player\Scripts\flash_controls.cs" />
      <Compile Include="Assets\Player\Scripts\player_controls.cs" />
      <Compile Include="Assets\Camera\Code\Scripts\cameraTopDown.cs" />
  <Reference Include="UnityEngine">
